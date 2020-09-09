@@ -19,15 +19,7 @@ def create
 end
 
 def index
-  if params[:category]
-    
-    @patterns = Pattern.search_by_category(params[:category])
-    @patterns = Pattern.order("created_at ASC") if @patterns == []
-
-  else
-   
     @patterns = Pattern.order("created_at ASC")
-  end
 end
 
 def show 
@@ -65,6 +57,6 @@ end
 
 def pattern_params 
 
-  params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website, :user_id)
+  params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website
 end 
 end

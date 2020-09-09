@@ -1,0 +1,12 @@
+def index
+  if params[:category]
+    
+    @patterns = Pattern.search_by_category(params[:category])
+    @patterns = Pattern.order("created_at ASC") if @patterns == []
+
+  else
+   
+    @patterns = Pattern.order("created_at ASC")
+  end
+end
+for search_by_category
