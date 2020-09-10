@@ -2,7 +2,7 @@ class PatternsController < ApplicationController
   before_action :set_pattern, only: [:show, :edit, :update, :destory]
 
 def new
-  @pattern = Pattern.new
+  @pattern = current_user.patterns.build
 end
 
 def create
@@ -48,15 +48,15 @@ def destroy
 end
 private
 
-def set_pattern 
-  @pattern = Pattern.find_by(id: params[:id])
-  if !@pattern 
-    redirect_to patterns_path 
+  def set_pattern 
+    @pattern = Pattern.find_by(id: params[:id])
+    if !@pattern 
+      redirect_to patterns_path 
+    end
+  end 
+
+  def pattern_params 
+
+    params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website)
   end
-end 
-
-def pattern_params 
-
-  params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website
-end 
 end
