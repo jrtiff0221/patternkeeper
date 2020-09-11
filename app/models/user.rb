@@ -16,7 +16,12 @@ class User < ApplicationRecord
       user.user_id = auth.user_id 
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-       
     end
   end
+  
+  def pattern_comments(pattern)
+    patten = pattern.find(pattern.id)
+    pattern.comments.select { |comment| comment.user_id == self.id }
+  end
+   
 end

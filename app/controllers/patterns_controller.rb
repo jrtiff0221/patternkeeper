@@ -2,13 +2,13 @@ class PatternsController < ApplicationController
   before_action :set_pattern, only: [:show, :edit, :update, :destory]
 
 def new
-  @pattern = current_user.patterns.build
+  @pattern = Pattern.new
 end
 
 def create
   
 
-  @pattern = current_user.patterns.build(pattern_params)
+  @pattern = Pattern.create(pattern_params)
   if @pattern.valid?
     @pattern.save
     
@@ -24,6 +24,7 @@ end
 
 def show 
   @pattern = Pattern.find_by(id: params[:id])
+  @user = User.new
 end 
 
 def edit
@@ -57,6 +58,6 @@ private
 
   def pattern_params 
 
-    params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website)
+    params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website, :user_id)
   end
 end
