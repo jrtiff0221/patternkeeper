@@ -6,8 +6,6 @@ def new
 end
 
 def create
-  
-
   @pattern = Pattern.create(pattern_params)
   if @pattern.valid?
     @pattern.save
@@ -58,6 +56,6 @@ private
 
   def pattern_params 
 
-    params.require(:pattern).permit(:title, :author, :published_date, :category, :difficulty, :description, :name, :website, :user_id)
+    params.require(:pattern).permit(:title, :author, :category, :difficulty, :description, :name, :website, :user_id)
   end
 end
