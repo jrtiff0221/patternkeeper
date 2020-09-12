@@ -17,7 +17,8 @@ def create
 end
 
 def index
-    @patterns = Pattern.order("created_at ASC")
+    
+  @patterns = Pattern.order("created_at ASC")
 end
 
 def show 
