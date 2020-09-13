@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     
     def home
 
-
         if current_user.present? 
             redirect_to patterns_path
         else

@@ -1,12 +1,16 @@
 <% if @patterns.blank? %>
 <p>There are not any patterns currently in the system.</p>
 <% else %>
-<p>These are the current patternss in our system</p>
+<p>These are the current patterns in our system</p>
 
 <ul id = "patterns">
    <% @patterns.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+   <li><%= link_to c.title, {:action => 'index', :id => c.id} -%></li>
    <% end %>
 </ul>
-
+<ul id = "comments">
+   <% @pattern.comments.each do |c| %>
+   <li><%= link_to c.title, {:action => 'index', :id => c.id} -%></li>
+   <% end %>
+</ul>
 <% end %>

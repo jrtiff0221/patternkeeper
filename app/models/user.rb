@@ -19,9 +19,8 @@ class User < ApplicationRecord
     end
   end
   
-  def pattern_comments(pattern)
-    patten = pattern.find(pattern.id)
-    pattern.comments.select { |comment| comment.user_id == self.id }
-  end
-   
+   def comment_patterns(comment)
+    comment = comment.find(comment.id)
+    comment.patterns.select { |comment| comment.user_id == self.id }
+   end
 end

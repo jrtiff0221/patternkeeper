@@ -1,21 +1,29 @@
 
-
-
 <h1><%= @pattern.title %></h1>
 <p><%= @pattern.category %></p>
+
+<% @pattern.users.distinct.each do |user| %>
+    <%= user.pattern_comments(@pattern).each do |comment| %>
+        <p><%= user.name %> says: <%= comment.message %>
+    <% end %>
+<% end %>
+
 
 <h3>New Comment:</h3>
 
 <%= form_for @pattern.comments.build do |f| %>
     <%= f.hidden_field :pattern_id %>
 
-    <%= f.collection_select :user_id, User.all, :id, :name %>
+   
 
     <%= f.fields_for :user, User.new do |user_fields| %>
         <%= user_fields.label :name %>
+        <br>
         <%= user_fields.text_field :name %>
     <% end %>
-
+    <br>
+    <%= f.label :Message %>
+    <br>
     <%= f.text_area :message %>
 
     <%= f.submit %>

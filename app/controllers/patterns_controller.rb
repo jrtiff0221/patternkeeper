@@ -3,6 +3,7 @@ class PatternsController < ApplicationController
 
 def new
   @pattern = Pattern.new
+ 
 end
 
 def create
@@ -17,13 +18,16 @@ def create
 end
 
 def index
-    @patterns = Pattern.order("created_at ASC")
+ 
+  @patterns = Pattern.all.order("created_at ASC")
+  
     
 end
 
 def show 
+
   @pattern = Pattern.find_by(id: params[:id])
-  @user = User.new
+
 end 
 
 def edit
