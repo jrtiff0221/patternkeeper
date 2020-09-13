@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 
     def create
-      #comment = Comment.create(comment_params)
-      #comment.save()
-      #redirect_to pattern_path(comment.pattern_id)
-      @pattern = Pattern.find(params[:pattern])
-      @comment = @pattern.comments.create(params[:comment])
-      redirect_to patterns_path
+      comment = Comment.create(comment_params)
+      comment.save()
+      
+      pattern_path(comment.pattern_id)
+  
+     
+      redirect_to pattern_path(comment.pattern_id)
      
     end
   

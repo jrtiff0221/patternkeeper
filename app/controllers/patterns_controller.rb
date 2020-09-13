@@ -19,15 +19,13 @@ end
 
 def index
  
-  @patterns = Pattern.all.order("created_at ASC")
-  
+  @patterns = Pattern.all.order("created_at ASC")  
     
 end
 
 def show 
-
-  @pattern = Pattern.find_by(id: params[:id])
-
+  @comments = @pattern.comments.all
+  @comment = @pattern.comments.build
 end 
 
 def edit

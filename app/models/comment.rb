@@ -5,6 +5,9 @@ class Comment < ActiveRecord::Base
     belongs_to :user
     belongs_to :pattern
     accepts_nested_attributes_for :user
+
+    scope :ordered, -> {order('created_at ASC')}
+    
   
   end
   

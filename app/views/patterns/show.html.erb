@@ -2,11 +2,6 @@
 <h1><%= @pattern.title %></h1>
 <p><%= @pattern.category %></p>
 
-<% @pattern.users.distinct.each do |user| %>
-    <%= user.pattern_comments(@pattern).each do |comment| %>
-        <p><%= user.name %> says: <%= comment.message %>
-    <% end %>
-<% end %>
 
 
 <h3>New Comment:</h3>
