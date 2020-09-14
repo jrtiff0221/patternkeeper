@@ -3,15 +3,12 @@
 <% else %>
 <p>These are the current patterns in our system</p>
 
+<% end %>
+
 <ul id = "patterns">
    <% @patterns.each do |c| %>
    <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
    <% end %>
 </ul>
 
-<ul id = "comments">
-   <% Comment.all.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
-   <% end %>
-</ul>
-<%end%>
+
