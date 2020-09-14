@@ -18,10 +18,28 @@ end
 
 def index
   @patterns = Pattern.all.order("created_at ASC")
+  
+end
+
+def comments_index
+  @pattern = Pattern.find_by(id: params[:id])
+  @comments = @pattern.comments
+  render template: 'comments/index'
+end
+
+def comment
+  @author = Author.find(params[:id])
+
+  # Note that because ids are unique by table we can go directly to
+  # Comment.find — no need for @pattern.comments.find...
+  @comment = Comment.find_by(id: params[:comment_id])
+  render template: 'comments/show'
 end
 
 def show 
   @pattern = Pattern.find_by(id: params[:id])
+  @comment = Comment.find_by(id: params[:id])
+  render template 'patterns/show'
 end 
 
 def edit

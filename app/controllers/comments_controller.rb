@@ -1,60 +1,53 @@
 class CommentsController < ApplicationController
-
-  def new
-    @comment = Comment.new(comment_params)
-  end
+  before_action :set_pattern, only: [:show, :edit, :update, :destory]
   
+  def new
+    @comment = Comment.new
+  end
+
   def create
-    @comment = Comment.create(comment_params)
-    if @comment.valid?
-        @comment.save
-        redirect_to pattern_comments_path(@comment)
+    @comment = Comment.new(comment_params)
+    @comment.save
+    redirect_to comment_path(@comment)
+  end
+
+  def index
+    if params[:pattern_id]
+      @comments = Pattern.find_by(:id params[:pattern_id]).comments
     else
-      render :new
+      @comments = Comment.all
     end
   end
-    
-  def index
-    @comments = Comment.all.order("created_at ASC") 
-  end
-
+ 
   def show
-    @comment = Comment.find_by(id: params[:id])
+    @comment = Comment.find_by(:id params[:id])
   end
 
-def edit
-  set_comment
-end
-
-def update
-  set_comment
-  if current_user.id == @comment.user_id && @comment.update(comment_params)
-    redirect_to  pattern_comments_path(@comment)
-  else 
-    render :edit 
+  def update
+    @comment = Comment.find_by(:id params[:id])
+    @comment.update(comment_params)
+    redirect_to comment_path(@comment)
   end
-end
 
-def destroy
-  set_comment 
-  if  current_user.id == @comment.user_id
-    @comment.destroy 
-    redirect to pattern_comment_path
+  def edit
+    @comment = Comment.find_by(:id params[:id])
   end
-end
+  
+  def destroy
+    @comment = Comment.find_by(:id params[:id])
+    @comment.destroy
+    redirect_to(@comment.post)
+  end
 
   private
 
-
-
-  def set_pattern 
+  def set_comment
     @comment = Comment.find_by(id: params[:id])
     if !@comment
-      redirect_to pattern_comment_path
+      redirect_to comments_path 
     end
   end 
 
-  
   def comment_params
     params.require(:comment).permit(:title, :name, :message, :pattern_id, :user_id)
   end

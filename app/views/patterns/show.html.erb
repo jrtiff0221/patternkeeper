@@ -1,13 +1,24 @@
 
 <h1><%= @pattern.title %></h1>
+<p><%= @pattern.author %></p>
 <p><%= @pattern.category %></p>
+<p><%= @pattern.difficulty %></p>
+<p><%= @pattern.description %></p>
+<p><%= @pattern.name %></p>
+<p><%= @pattern.website %></p>
+
+<h4>Comments </h4>
+<br>
+<h1><%= @comment.title %></h1>
+<p><%= @comment.name %></p>
+<p><%= @comment.message %></p>
 
 
 
 <h3>New Comment:</h3>
 
 <%= form_for Comment.new do |f| %>
-    <%= f.hidden_field :pattern_id %>
+    <%= f.hidden_field :pattern_id, value: @pattern_id %>
 
    <%= f.label :Title %>
     <br>
