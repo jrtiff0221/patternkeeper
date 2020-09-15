@@ -5,7 +5,7 @@ def new
 end
 
 def create
-  @comment = Comment.new(comment_params)
+  @comment = Comment.create(comment_params)
   @commen.save
   redirect_to comment_path(@comments)
 end
@@ -24,6 +24,6 @@ end
 
 private
   def comment_params
-    params.require(:comment).permit(:title, :name, :message, :user_id, :comment_id)
+    params.require(:comment).permit(:title, :name, :message, :user_id, :pattern_id)
   end
 end
