@@ -12,18 +12,21 @@ Rails.application.routes.draw do
       get 'signup', to: 'devise/sessions#new'
    end
   
-  resources :patterns
+  resources :patterns, only: [:index, :show, :new, :create, :edit, :update] 
+  
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update]  
 
  
   get 'pattern/:id/comments', to: 'patterns#comments_index'
   
   get 'pattern/:id/comments/:comment_id', to: 'patterns#comments'
- 
-    
-  resources :patterns, only: [:show] do 
-    resources :comments, only: [:index, :show, :new, :create, :edit, :update]  
+  
+
+  resources :patterns, only: [:show, :index] do 
+    resources :comments, only: [:index, :show]  
+
   end
-  resources :comments, only: [:index, :show, :new, :create, :edit, :update] 
+
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

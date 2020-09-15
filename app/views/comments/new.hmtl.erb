@@ -1,17 +1,8 @@
-<h1><%= @pattern.title %></h1>
-<p><%= @pattern.category %></p>	
-<p><%= @pattern.description  %></p>
-
-<td><%= link_to "Show", @pattern %></td>
-<td><%= link_to "Edit", edit_pattern_path(@pattern) %></td>
-
-<h3> Add a Comment:</h3>
+<h3> Create A new Comment:</h3>
 <%= form_for Comment.new do |f| %>
     
     <%= f.hidden_field :comment_id, value: @comment_id %>
     <%= f.hidden_field :pattern_id, value: @pattern_id %>
-    
-
     
     <%= f.label :Title %>
     <br>

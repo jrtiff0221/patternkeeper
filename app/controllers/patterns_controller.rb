@@ -24,22 +24,18 @@ end
 def comments_index
   @pattern = Pattern.find_by(id: params[:id])
   @comments = @pattern.comments
-  render template: 'comments/index'
+  render 'comments/index'
 end
 
 def comment
-  @author = Author.find(params[:id])
-
-  # Note that because ids are unique by table we can go directly to
-  # Comment.find — no need for @pattern.comments.find...
+  @comment = Comment.find(params[:id])
   @comment = Comment.find_by(id: params[:comment_id])
-  render template: 'comments/show'
+  render 'comments/show'
 end
 
 def show 
   @pattern = Pattern.find_by(id: params[:id])
   @comment = Comment.find_by(id: params[:id])
-  render template 'patterns/show'
 end 
 
 def edit
@@ -57,7 +53,7 @@ end
 
 def destroy
   set_pattern 
-  if  current_user.id == @pattern.user_id
+  if current_user.id == @pattern.user_id
     @pattern.destroy 
     redirect to patterns_path
   end
@@ -72,7 +68,6 @@ private
   end 
 
   def pattern_params 
-
     params.require(:pattern).permit(:title, :author, :category, :difficulty, :description, :name, :website, :user_id)
   end
 end

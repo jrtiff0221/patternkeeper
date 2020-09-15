@@ -8,11 +8,19 @@
     <%end%>
 <%= form_for (@pattern) do |f| %>
     
-    <%= f.label :Title %>
-    <%= f.text_field :title %>
-<br>
-    <%= f.label :Author %>
-    <%= f.text_field :author %>
+    <p><label for = "pattern_title">Title</label>:	
+    <%= text_field 'patterns', 'title' %></p>
+
+    <p><label for = "pattern_author">Author</label>:
+    <%= text_field 'patterns', 'author' %></p>
+
+<%= f.select(:category,["Crocheting", "Knitting", "Macrame", "Sewing"]) %>
+    <%= text_field 'patterns', 'author' %></p>
+
+</p>	   
+<p><label for = "pattern_difficulty">Difficulty</label>:</p>	
+
+
 <br>
     <%= f.label :Category %>
     <%= f.select(:category,["Crocheting", "Knitting", "Macrame", "Sewing"]) %>
