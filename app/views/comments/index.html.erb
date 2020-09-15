@@ -1,2 +1,6 @@
-  <h2><%= comment.title %></h2>
-  <h3><%= comment.name %></h3>
+
+<ul id = "comments">
+   <% @comments.each do |c| %>
+   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+   <% end %>
+

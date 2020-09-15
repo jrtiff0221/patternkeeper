@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   resources :patterns, only: [:index, :show, :new, :create, :edit, :update] 
   
-  resources :comments, only: [:index, :show, :new, :create, :edit, :update]  
+  resources :comments
 
  
   get 'pattern/:id/comments', to: 'patterns#comments_index'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'pattern/:id/comments/:comment_id', to: 'patterns#comments'
   
 
-  resources :patterns, only: [:show, :index] do 
+  resources :patterns, only: [:show,] do 
     resources :comments, only: [:index, :show]  
 
   end

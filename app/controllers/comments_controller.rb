@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
 
-def new 
-  @comment = Comment.new(comment_params)
-end
-
-def create
-  @comment = Comment.create(comment_params)
-  @commen.save
-  redirect_to comment_path(@comments)
-end
+  def new 
+    @comment = Comment.new(comment_params)
+  end
+  
+  def create
+    @comment = Comment.create(comment_params)
+    @comment.save
+  end
+  
   
   def index
     if params[:pattern_id]
@@ -19,7 +19,7 @@ end
   end
  
   def show
-    @comments = @pattern.comments
+    @comment = Comment.find(params[:id])
   end
 
 private

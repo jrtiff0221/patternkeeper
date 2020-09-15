@@ -5,14 +5,18 @@
 <td><%= link_to "Show", @pattern %></td>
 <td><%= link_to "Edit", edit_pattern_path(@pattern) %></td>
 
+<h3>Comments:</h3>
+
+<ul id = "comments">
+   <% Comment.all.each do |c| %>
+   <li><%= link_to c.title, {:action => 'index', :id => c.id} -%></li>
+   <% end %>
+
+
+
 <h3> Add a Comment:</h3>
 <%= form_for Comment.new do |f| %>
-    
-    <%= f.hidden_field :comment_id, value: @comment_id %>
-    <%= f.hidden_field :pattern_id, value: @pattern_id %>
-    
 
-    
     <%= f.label :Title %>
     <br>
     <%= f.text_area :title %>
@@ -24,6 +28,6 @@
     <%= f.label :Message %>
     <br>
     <%= f.text_area :message %>
-
+    <br>
     <%= f.submit %>
 <% end %>
