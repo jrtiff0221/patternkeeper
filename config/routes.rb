@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
-  get 'users/:id/patterns', to: 'users#patterns_index'
-  get 'users/:id/patters/:pattern_id' , to: 'users#pattern'
- 
   devise_for :users, :controllers => {:registrations => "registrations", omniauth_callbacks: 'callbacks'}
   
     devise_scope :user do 
@@ -18,6 +15,14 @@ Rails.application.routes.draw do
   
   resources :comments, only: [:index, :show, :new, :create, :edit, :update] 
 
+  get 'users/:id/patterns', to: 'users#patterns_index'
+  get 'users/:id/patters/:pattern_id' , to: 'users#pattern'
+  
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update] 
+
+  get 'users/:id/comments', to: 'users#comments_index'
+  get 'users/:id/comments/:pattern_id' , to: 'users#comment'
+ 
   
   resources :users, only: [:show] do
     resources :patterns, only: [:index, :show, :new] do

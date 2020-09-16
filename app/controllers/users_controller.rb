@@ -11,12 +11,26 @@ class UsersController < ApplicationController
     def patterns_index
         @user = User.find(params[:id])
         @patterns = @user.patterns
-        render template: 'poss/index'
+        render template: 'patterns/index'
       end
      
       def pattern
-        @author = Author.find(params[:id])
-        @pattern = pattern.find(params[:pattern_id])
+        @user = User.find(params[:id])
+        @pattern = Pattern.find(params[:pattern_id])
         render template: 'patterns/show'
       end
+
+      def comments_index
+        @user = User.find(params[:id])
+        @comments = @user.comments
+        render template: 'comments/index'
+      end
+
+   
+    def comment
+      @user = User.find(params[:id])
+      @comment = Comment.find(params[:comment_id])
+      render template: 'comments/show'
+    end
+
 end

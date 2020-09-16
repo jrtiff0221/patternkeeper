@@ -1,6 +1,6 @@
 class PatternsController < ApplicationController
   
-  def new
+def new
   @pattern = Pattern.new
 end
 
