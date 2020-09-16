@@ -1,21 +1,18 @@
 <h1><%= @pattern.title %></h1>
 <p><%= @pattern.category %></p>	
 <p><%= @pattern.description  %></p>
-
 <td><%= link_to "Show", @pattern %></td>
 <td><%= link_to "Edit", edit_pattern_path(@pattern) %></td>
+<br>
 
-<h3>Comments:</h3>
-
-<ul id = "comments">
-   <% @pattern.comments.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
-   <% end %>
-
-
-
+<h3><%= @pattern.name %></h3>
+    <p>Comments:</p>
+<% @pattern.comments.each do |comment| %>
+  <div><%= comment.title %></div>
+  <div><%= comment.name %></div>
+  <div><%= comment.message %></div>
+  <% end %> 
 <h3> Add a Comment:</h3>
-
 <%= form_for Comment.to_s do |f| %>
 
 <%= f.label :Title %>

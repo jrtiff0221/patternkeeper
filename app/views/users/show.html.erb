@@ -1,0 +1,9 @@
+ 
+<h1><%= @user.name %></h1>
+
+<%= link_to "New Pattern",  new_pattern_path(@pattern) %>
+
+<p>Patterns:</p>
+<% @user.patterns.all.each do |pattern| %>
+  <div><%= @user.pattern.title %></div>
+<% end %>

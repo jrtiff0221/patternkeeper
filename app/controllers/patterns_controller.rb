@@ -1,7 +1,6 @@
 class PatternsController < ApplicationController
-  before_action :set_pattern, only: [:show, :edit, :update, :destory]
-
-def new
+  
+  def new
   @pattern = Pattern.new
 end
 
@@ -15,57 +14,42 @@ def create
     render :new 
   end
 end
-
 def index
-  @patterns = Pattern.all.order("created_at ASC")
-  
-end
-
-def comments_index
-  @pattern = Pattern.find_by(id: params[:id])
-  @comments = @pattern.comments
-  render 'comments/index'
-end
-
-def comment
-  @comment = Comment.find(params[:id])
-  @comment = Comment.find(id: params[:comment_id])
-  render 'comments/show'
+  if params[:user_id]
+    @patterns =  User.find(params[:user_id]).patterns
+  else
+    @patterns = Pattern.all.order("created_at ASC")
+  end
 end
 
 def show
-  @pattern = Pattern.find_by(id: params[:id])
- 
-end
-
-def edit
-  set_pattern
+  if params[:user_id]
+    @pattern = User.find(params[:user_id]).patterns.find(params[:id])
+  else
+    @pattern= Pattern.find(params[:id])
+  end
 end
 
 def update
-  set_pattern
-  if current_user.id == @pattern.user_id && @pattern.update(pattern_params)
-    redirect_to  pattern_path(@pattern)
-  else 
-    render :edit 
-  end
+  @pattern = Pattern.find(params[:id])
+  @pattern.update(pattern_params)
+  redirect_to pattern_path(@pattern)
 end
 
-def destroy
-  set_pattern 
-  if current_user.id == @pattern.user_id
-    @pattern.destroy 
-    redirect to patterns_path
+def edit
+  if params[:user_id]
+    user = User.find_by(id: params[:user_id])
+    if user.nil?
+      redirect_to users_path, alert: "User not found."
+    else
+      @pattern = user.patterns.find_by(id: params[:id])
+      redirect_to user_patterns_path(user), alert: "Pattern not found." if @pattern.nil?
+    end
+  else
+    @pattern = Pattern.find(params[:id])
   end
 end
 private
-
-  def set_pattern 
-    @pattern = Pattern.find_by(id: params[:id])
-    if !@pattern 
-      redirect_to patterns_path 
-    end
-  end 
 
   def pattern_params 
     params.require(:pattern).permit(:title, :author, :category, :difficulty, :description, :name, :website, :user_id)

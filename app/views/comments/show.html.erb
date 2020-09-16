@@ -1,3 +1,32 @@
 <h1><%= @comment.title %></h1>
 <p><%= @comment.name %></p>	
-<p><%= @pattern.message  %></p>
+<p><%= @comment.message  %></p>
+<td><%= link_to "Show", @comment %></td>
+<td><%= link_to "Edit", edit_comment_path(@comment) %></td>
+<br>
+
+<h3><%= @comment.name %></h3>
+    <p>Comments:</p>
+<% @comment.comments.each do |comment| %>
+  <div><%= comment.title %></div>
+  <div><%= comment.name %></div>
+  <div><%= comment.message %></div>
+  <p>by <%= link_to @comment.comment.name, comment_path(@comment.comment) if @comment.comment %> (<%= link_to "Edit Comment", edit_comment_post_path(@comment.comment, @comment if comment.comment %>)</p>
+
+ <h3> Add a Comment:</h3>
+<%= form_for Comment.to_set do |f| %>
+
+<%= f.label :Title %>
+    <br>
+    <%= f.text_area :title %>
+    <br>
+    <%= f.label :Name %>
+    <br>
+    <%= f.text_area :name %>
+    <br>
+    <%= f.label :Message %>
+    <br>
+    <%= f.text_area :message %>
+    <br>
+    <%= f.submit %>
+<% end %>

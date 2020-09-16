@@ -1,0 +1,13 @@
+<%= form_for(@comment) do |f| %>
+
+  <%= f.hidden_field :pattern_id %>
+  <label>Title:</label><br>
+  <%= f.text_field :title %><br>
+   <label>Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Message:</label><br>
+  <%= f.text_area :message %><br>
+
+  <%= f.submit %>
+<% end %>

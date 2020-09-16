@@ -1,6 +1,7 @@
-
+<h1> All Patterns </h1>
 <ul id = "patterns">
    <% @patterns.each do |c| %>
    <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
    <% end %>
+   
 
