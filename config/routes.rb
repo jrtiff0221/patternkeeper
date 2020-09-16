@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'pattern/:id/comments/:comment_id', to: 'patterns#comments'
   
 
-  resources :patterns, only: [:show,] do 
+  resources :patterns do 
     resources :comments, only: [:index, :show]  
 
   end

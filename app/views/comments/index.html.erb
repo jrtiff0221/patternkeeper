@@ -1,6 +1,6 @@
 
 <ul id = "comments">
-   <% @comments.each do |c| %>
+   <% @pattern.comments.each do |c| %>
    <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
    <% end %>
 

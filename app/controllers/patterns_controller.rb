@@ -24,17 +24,18 @@ end
 def comments_index
   @pattern = Pattern.find_by(id: params[:id])
   @comments = @pattern.comments
-  render 'patterns/show'
+  render 'comments/index'
 end
 
 def comment
   @comment = Comment.find(params[:id])
   @comment = Comment.find(id: params[:comment_id])
-  render 'patterns/show'
+  render 'comments/show'
 end
 
 def show
   @pattern = Pattern.find_by(id: params[:id])
+ 
 end
 
 def edit

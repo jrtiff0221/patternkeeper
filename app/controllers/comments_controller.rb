@@ -6,7 +6,11 @@ class CommentsController < ApplicationController
   
   def create
     @comment = Comment.create(comment_params)
-    @comment.save
+    if @comment.valid?
+      @comment.save
+      redirect_to pattern_comments_path(@comment)
+    else 
+      render :new
   end
   
   

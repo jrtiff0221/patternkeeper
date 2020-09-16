@@ -1,0 +1,18 @@
+
+<h3> Add a Comment:</h3>
+<%= form_for (@pattern.comments) do |f| %>
+
+    <%= f.label :Title %>
+    <br>
+    <%= f.text_area :title %>
+    <br>
+    <%= f.label :Name %>
+    <br>
+    <%= f.text_area :name %>
+    <br>
+    <%= f.label :Message %>
+    <br>
+    <%= f.text_area :message %>
+    <br>
+    <%= f.submit %>
+<% end %>
