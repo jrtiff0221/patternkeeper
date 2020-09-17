@@ -1,7 +1,7 @@
 class PatternsController < ApplicationController
   
 def new
-  @pattern = Pattern.new
+  @pattern = Pattern.new(user_id: params[:user_id])
 end
 
 def create

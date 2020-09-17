@@ -5,6 +5,7 @@
 <td><%= link_to "Edit", edit_pattern_path(@pattern) %></td>
 <br>
 
+
 <h3><%= @pattern.name %></h3>
     <p>Comments:</p>
 <% @pattern.comments.each do |comment| %>
@@ -12,20 +13,5 @@
   <div><%= comment.name %></div>
   <div><%= comment.message %></div>
   <% end %> 
-<h3> Add a Comment:</h3>
-<%= form_for Comment.to_s do |f| %>
+<%= link_to 'Leave a Comment', new_comment_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
 
-<%= f.label :Title %>
-    <br>
-    <%= f.text_area :title %>
-    <br>
-    <%= f.label :Name %>
-    <br>
-    <%= f.text_area :name %>
-    <br>
-    <%= f.label :Message %>
-    <br>
-    <%= f.text_area :message %>
-    <br>
-    <%= f.submit %>
-<% end %>
