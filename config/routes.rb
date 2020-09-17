@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'users/:id/patters/:pattern_id' , to: 'users#pattern'
   
   resources :users, only: [:show] do
-    resources :patterns, only: [:index, :show]
+    resources :patterns, only: [:index, :show,:new, :edit]
   end
   
   resources :patterns, only: [:index, :show, :new, :create, :edit, :update] 

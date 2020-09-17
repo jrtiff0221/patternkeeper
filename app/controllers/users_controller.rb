@@ -11,7 +11,11 @@ class UsersController < ApplicationController
     end
     
     def index
-        @Users = User.all
+      if params[:user_id]
+        @patterns =  User.find(params[:user_id]).patterns
+      else
+        @patterns = Pattern.all.order("created_at ASC")
+      end
     end
 
     def patterns_index

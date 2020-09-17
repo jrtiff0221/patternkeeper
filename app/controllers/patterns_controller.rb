@@ -1,10 +1,14 @@
 class PatternsController < ApplicationController
   
-def new
-  @pattern = Pattern.new(user_id: params[:user_id])
-end
+  def new
+    if params[:user_id] && !User.exists?(params[:user_id])
+      redirect_to users_path, alert: "User not found."
+    else
+      @pattern = Pattern.new(user_id: params[:userr_id])
+    end
+  end
 
-def create
+  def create
   @pattern = Pattern.create(pattern_params)
   if @pattern.valid?
     @pattern.save
@@ -14,6 +18,7 @@ def create
     render :new 
   end
 end
+
 def index
   if params[:user_id]
     @patterns =  User.find(params[:user_id]).patterns

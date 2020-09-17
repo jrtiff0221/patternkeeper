@@ -1,17 +1,23 @@
-<h1><%= @pattern.title %></h1>
-<p><%= @pattern.category %></p>	
-<p><%= @pattern.description  %></p>
-<td><%= link_to "Show", @pattern %></td>
-<td><%= link_to "Edit", edit_pattern_path(@pattern) %></td>
 <br>
+<label>Pattern Title:</label>
+<%= @pattern.title %><br>
+<label>Pattern Author:</label>
+<%= @pattern.author %><br>
+<label>Pattern Category:</label>
+<%= @pattern.category %><br>
+<label>Pattern Difficulty:</label>
+<%= @pattern.difficulty %><br>
+<label>Pattern Description</label><br>
+<%= @pattern.description %><br>
+<label>Name:</label>
+<%= @pattern.name %><br>
+<label>Website:</label>
+<%= @pattern.website %><br>
+
+<p>by <%= link_to @pattern.users.name, users_path(@pattern.users) if @pattern.users %> (<%= link_to "Edit Pattern", edit_user_pattern_path(@pattern.users, @pattern) if @pattern.users %>)</p>
 
 
-<h3><%= @pattern.name %></h3>
-    <p>Comments:</p>
-<% @pattern.comments.each do |comment| %>
-  <div><%= comment.title %></div>
-  <div><%= comment.name %></div>
-  <div><%= comment.message %></div>
-  <% end %> 
-<%= link_to 'Leave a Comment', new_comment_path, method: :get, class: "btn btn-outline-primary nav-btn" %>
 
+
+
+ 

@@ -1,6 +1,8 @@
-<h1> All Patterns </h1>
+
+<h1> All Users </h1>
 <ul id = "users">
    <% User.all.each do |c| %>
    <li><%= link_to c.name, {:action => 'show', :id => c.id} -%></li>
    <% end %>
+   
    
