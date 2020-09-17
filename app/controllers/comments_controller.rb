@@ -48,7 +48,7 @@ def edit
       redirect_to users_path, alert: "User not found."
     else
       @comment = user.comments.find_by(id: params[:id])
-      redirect_to user_comments_path(user), alert: "Comment not found." if @pattern.nil?
+      redirect_to user_comments_path(user), alert: "Comment not found." if @comment.nil?
     end
   else
     @comment = Comment.find(params[:id])

@@ -1,12 +1,6 @@
 class UsersController < ApplicationController
-
-    def new
-      @pattern = Pattern.new
-    end
-    def create
-    end
-
-    def show
+  
+  def show
         @user = User.find(params[:id])
     end
     
@@ -23,11 +17,27 @@ class UsersController < ApplicationController
         @patterns = @user.patterns
         render template: 'patterns/index'
       end
-     
+      
       def pattern
         @user = User.find(params[:id])
         @pattern = Pattern.find(params[:pattern_id])
         render template: 'patterns/show'
+      end
+
+      def index
+        if params[:user_id]
+          @comments =  User.find(params[:user_id]).comments
+        else
+          @comments = Comment.all.order("created_at ASC")
+        end
+      end
+      
+      def show
+        if params[:user_id]
+          @comment = User.find(params[:user_id]).comments.find(params[:id])
+        else
+          @comment= Comment.find(params[:id])
+        end
       end
 
       def comments_index
