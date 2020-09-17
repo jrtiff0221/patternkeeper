@@ -1,10 +1,15 @@
+
 <%= form_for(@comment) do |f| %>
 
-  <%= f.hidden_field :pattern_id %>
+    <% if @comment.user.nil? %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name) %>
+  <% end %>
+  <br>
+  <%= f.hidden_field :user_id %>
+
   <label>Title:</label><br>
   <%= f.text_field :title %><br>
-   <label>Name:</label><br>
-  <%= f.text_field :name %><br>
+
 
   <label>Message:</label><br>
   <%= f.text_area :message %><br>

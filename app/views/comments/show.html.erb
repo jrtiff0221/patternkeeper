@@ -1,14 +1,6 @@
-<h1><%= @comment.title %></h1>
-<p><%= @comment.name %></p>	
-<p><%= @comment.message  %></p>
-<td><%= link_to "Show", @comment %></td>
-<td><%= link_to "Edit", edit_comment_path(@comment) %></td>
-<br>
-
-<h3><%= @comment.name %></h3>
-    <p>Comments:</p>
-<% @comment.comments.each do |comment| %>
-  <div><%= comment.title %></div>
-  <div><%= comment.name %></div>
-  <div><%= comment.message %></div>
- 
+<label>Comment Title:</label>
+<%= @comment.title %><br>
+<label>Name:</label>
+<%= @comment.name %><br>
+<label>Comment Message:</label>
+<%= @comment.message %><br>

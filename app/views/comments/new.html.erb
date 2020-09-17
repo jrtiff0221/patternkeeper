@@ -1,17 +1,1 @@
-<h1> Create a Comment:</h1>
-<br>
-<%= form_for (@comment) do |f| %>
-    <%= f.label :Title %>
-    <br>
-    <%= f.text_area :title %>
-    <br>
-    <%= f.label :Name %>
-    <br>
-    <%= f.text_area :name %>
-    <br>
-    <%= f.label :Message %>
-    <br>
-    <%= f.text_area :message %>
-    <br>
-    <%= f.submit %>
-<% end %>
+<%= render 'cform' %>

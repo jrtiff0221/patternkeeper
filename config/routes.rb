@@ -15,17 +15,17 @@ Rails.application.routes.draw do
   get 'users/:id/patters/:pattern_id' , to: 'users#pattern'
   
   resources :users, only: [:show] do
-    resources :patterns, only: [:index, :show,:new, :edit]
+    resources :patterns, only: [:index, :show, :new, :edit]
   end
   
   resources :patterns, only: [:index, :show, :new, :create, :edit, :update] 
 
 
   get 'users/:id/comments', to: 'users#comments_index'
-  get 'users/:id/comments/:pattern_id' , to: 'users#comment'
+  get 'users/:id/comments/:comment_id' , to: 'users#comment'
   
   resources :users, only: [:show] do
-    resources :comments, only: [:index, :show, :new]
+    resources :comments, only: [:index, :show, :new, :edit]
   end
   resources :comments, only: [:index, :show, :new, :create, :edit, :update] 
 
