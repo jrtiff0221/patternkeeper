@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
     @comment = Comment.create(comment_params)
     if @comment.valid?
       @comment.save
-    byebug
   
       redirect_to comment_path(@comment)
     else
@@ -57,6 +56,6 @@ def edit
 end
 private
   def comment_params
-    params.require(:comment).permit(:title, :name, :message,)
+    params.require(:comment).permit(:title, :name, :message, :user_id, :pattern_id)
   end
 end

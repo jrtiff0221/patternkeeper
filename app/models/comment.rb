@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
-    validates :name, :title, :message, :user_id, presence: true
+    validates :name, :title, :message, presence: true
     
-    belongs_to :users
-    belongs_to :patterns
+    belongs_to :user
+    belongs_to :pattern
     
     
 

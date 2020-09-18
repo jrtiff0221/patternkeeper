@@ -35,6 +35,7 @@ def show
   end
 end
 
+
 def update
   @pattern = Pattern.find(params[:id])
   @pattern.update(pattern_params)

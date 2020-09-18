@@ -53,4 +53,10 @@ class UsersController < ApplicationController
       render template: 'comments/show'
     end
 
+    def user_pattern_comments_index
+      @user = User.find(params[:id])
+      @pattern
+      @comment = Comment.find(params[:comment_id])
+      @commens = @pattern.comments
+
 end
