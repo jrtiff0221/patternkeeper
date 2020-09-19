@@ -13,12 +13,7 @@
   </head>
 
   <body>
-  
-    <% if current_user.present? %>
-      <%= render :partial => "layouts/navbar" %>
-    <% end %>
-    <div class='container'>
-
-<%= yield %>
+    <%= render "layouts/navbar" %>
+    <%= yield %>
   </body>
 </html>

@@ -33,8 +33,8 @@ def show
   else
     @pattern= Pattern.find(params[:id])
   end
+    @comment = @pattern.comments.build
 end
-
 
 def update
   @pattern = Pattern.find(params[:id])

@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations", omniauth_callbacks: 'callbacks'}
   
     devise_scope :user do 
-       get 'login', to: 'devise/sessions#new'
+      get 'login', to: 'devise/sessions#new'
       get 'signup', to: 'devise/sessions#new'
+      get 'logout', to: 'devise/sessions#destroy'
     end
-   
+
   resources :users, only: [:index, :show]
   
   get 'users/:id/patterns', to: 'users#patterns_index'

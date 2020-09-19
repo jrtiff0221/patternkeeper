@@ -5,11 +5,12 @@
         <% end %>	
       <%end%>
 
-<%= form_for(@comment) do |f| %>
+<%= form_for @comment do |f| %>
 
-  <%= f.label :Title %>	
-  <%= f.text_field :title %><br>
+<%= f.hidden_field :user_id, value: current_user.id  %>
+<%= f.hidden_field :pattern_id, value: @pattern.id %>
 
+<%= pattern_select(@comment, @comment.pattern) %>
   <%= f.label :Name %>	
   <%= f.text_field :name %><br>
 

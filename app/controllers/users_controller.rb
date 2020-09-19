@@ -24,21 +24,6 @@ class UsersController < ApplicationController
         render template: 'patterns/show'
       end
 
-      def index
-        if params[:user_id]
-          @comments =  User.find(params[:user_id]).comments
-        else
-          @comments = Comment.all.order("created_at ASC")
-        end
-      end
-      
-      def show
-        if params[:user_id]
-          @comment = User.find(params[:user_id]).comments.find(params[:id])
-        else
-          @comment= Comment.find(params[:id])
-        end
-      end
 
       def comments_index
         @user = User.find(params[:id])
@@ -52,11 +37,5 @@ class UsersController < ApplicationController
       @comment = Comment.find(params[:comment_id])
       render template: 'comments/show'
     end
-
-    def user_pattern_comments_index
-      @user = User.find(params[:id])
-      @pattern
-      @comment = Comment.find(params[:comment_id])
-      @commens = @pattern.comments
 
 end
