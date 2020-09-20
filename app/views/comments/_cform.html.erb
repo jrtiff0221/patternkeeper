@@ -9,8 +9,10 @@
 
 <%= f.hidden_field :user_id, value: current_user.id  %>
 <%= f.hidden_field :pattern_id, value: @pattern.id %>
+ 
+ <%= f.label :Title %>	
+  <%= f.text_field :title %><br>
 
-<%= pattern_select(@comment, @comment.pattern) %>
   <%= f.label :Name %>	
   <%= f.text_field :name %><br>
 

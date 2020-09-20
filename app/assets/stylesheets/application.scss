@@ -13,3 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+ @import 'bootstrap';
+
+ $white: white;
+ $black: black;
+ $green: #6AB7A3;
+ $green-light: #ddeddc;
+ $green-dark: #429e85;
+ $gold: #FFDF00;
+ 
+ body {
+     background: $green;
+     color: $black;
+     font-family: 'Merriweather', sans-serif;
+ }
+ 
+ p {
+     font-size: 16px;
+     color: $black;
+ }
+ 
+ .navbar {
+     margin-bottom: 20px;
+ }
+ 
+ .nav-btn {
+     margin-right: 10px;
+ }
+ 
+ .gold-star {
+     color: $gold;
+ }
+ 
+ .table-header {
+     background: $green-dark;
+     border-color: $green-dark !important;
+ }
+ 
+ .card {
+     max-width: 400px;
+     width: 400px;
+     margin: 15px 0;
+     background-color: $green-light;
+ }
