@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable,  omniauth_providers: %i[github]
+         
+  validates :email, uniqueness: true
  
   has_many :patterns
   has_many :comments, through: :patterns
