@@ -8,7 +8,7 @@ class PatternsController < ApplicationController
     end
   end
 
-  def create
+def create
   @pattern = Pattern.create(pattern_params)
   if @pattern.valid?
     @pattern.save
@@ -37,25 +37,24 @@ def show
 end
 
 def update
-  @pattern = Pattern.find(params[:id])
-  @pattern.update(pattern_params)
-  redirect_to pattern_path(@pattern)
+  set_pattern
+  if current_user.id == @pattern.user_id && @pattern.update(pattern_params)
+    redirect_to  pattern_path(@pattern)
+  else 
+    render :edit 
+  end
 end
 
 def edit
-  if params[:user_id]
-    user = User.find_by(id: params[:user_id])
-    if user.nil?
-      redirect_to users_path, alert: "User not found."
-    else
-      @pattern = user.patterns.find_by(id: params[:id])
-      redirect_to user_patterns_path(user), alert: "Pattern not found." if @pattern.nil?
-    end
-  else
-    @pattern = Pattern.find(params[:id])
-  end
+  @pattern = Pattern.find_by(id: params[:id])
 end
-private
+
+def destroy
+  @pattern = Pattern.find_by(id: params[:id])
+  @pattern.destroy
+  redirect_to root_path
+end
+private 
 
   def pattern_params 
     params.require(:pattern).permit(:title, :author, :category, :difficulty, :description, :name, :website, :user_id)

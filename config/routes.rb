@@ -16,19 +16,19 @@ Rails.application.routes.draw do
   get 'users/:id/patters/:pattern_id' , to: 'users#pattern'
   
   resources :users, only: [:show] do
-    resources :patterns, only: [:index, :show, :new, :edit]
+    resources :patterns, only: [:index, :show, :new, :edit, :destroy ]
   end
   
-  resources :patterns, only: [:index, :show, :new, :create, :edit, :update] 
+  resources :patterns, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
 
 
   get 'users/:id/comments', to: 'users#comments_index'
   get 'users/:id/comments/:comment_id' , to: 'users#comment'
   
   resources :users, only: [:show] do
-    resources :comments, only: [:index, :show, :new, :edit]
+    resources :comments, only: [:index, :show, :new, :edit, :destroy]
   end
-  resources :comments, only: [:index, :show, :new, :create, :edit, :update] 
+  resources :comments, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

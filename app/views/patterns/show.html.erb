@@ -13,7 +13,9 @@
 <%= @pattern.name %><br>
 <label>Website:</label>
 <%= @pattern.website %><br>
-<p>by <%= link_to @pattern.users.name, users_path(@pattern.users) if @pattern.users %> (<%= link_to "Edit Pattern", edit_user_pattern_path(@pattern.users, @pattern) if @pattern.users %>)</p>
+
+  <%= link_to "Edit Pattern", edit_user_pattern_path(@pattern), method: "get" %>
+   <%= link_to "Delete pattern", user_pattern_path(@pattern), method: "delete",  data: { confirm: 'Are You Sure?' }%>
 
 <%= form_for(@comment) do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>

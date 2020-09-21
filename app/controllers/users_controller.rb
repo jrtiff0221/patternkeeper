@@ -38,4 +38,6 @@ class UsersController < ApplicationController
       render template: 'comments/show'
     end
 
+   
+
 end

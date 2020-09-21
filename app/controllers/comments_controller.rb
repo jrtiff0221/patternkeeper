@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
       redirect_to users_path, alert: "User not found."
@@ -36,25 +36,25 @@ def show
 end
 
 def update
-  @comment = Comment.find(params[:id])
-  @comment.update(comment_params)
-  redirect_to comment_path(@comment)
-end
-
-def edit
-  if params[:user_id]
-    user = User.find_by(id: params[:user_id])
-    if user.nil?
-      redirect_to users_path, alert: "User not found."
-    else
-      @comment = user.comments.find_by(id: params[:id])
-      redirect_to user_comments_path(user), alert: "Comment not found." if @comment.nil?
-    end
-  else
-    @comment = Comment.find(params[:id])
+  if current_user.id == @comment.user_id && @comment.update(comment_params)
+    redirect_to  pattern_path(@pattern)
+  else 
+    render :edit 
   end
 end
+
+
+def edit
+  @comment = Comment.find_by(id: params[:id])
+end
+  
+def destroy
+  @comment = Comment.find_by(id: params[:id])
+  @comment.delete
+  redirect_to root_path
+end
 private
+
   def comment_params
     params.require(:comment).permit(:title, :name, :message, :user_id, :pattern_id)
   end

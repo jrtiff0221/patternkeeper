@@ -4,3 +4,7 @@
 <%= @comment.name %><br>
 <label>Comment Message:</label>
 <%= @comment.message %><br>
+
+ <%= link_to "Edit Comment", edit_user_comment_path(@comment), method: "get" %>
+   <%= link_to "Delete Comment", user_comment_path(@comment), method: "delete",  data: { confirm: 'Are You Sure?' }%>
+<br>
