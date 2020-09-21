@@ -16,22 +16,20 @@
 
  @import 'bootstrap';
 
- $white: white;
- $black: black;
- $green: #6AB7A3;
- $green-light: #ddeddc;
- $green-dark: #429e85;
- $gold: #FFDF00;
- 
+ $white: #530b0b;
+ $lime: #3ae943;
+ $red: #cc000ac9;
+ $orange: #eb4b01;
+ $purle: #5e0283c4;
  body {
-     background: $green;
-     color: $black;
+     background: $red;
+     color: $lime;
      font-family: 'Merriweather', sans-serif;
  }
  
  p {
      font-size: 16px;
-     color: $black;
+     color: $purple;
  }
  
  .navbar {
@@ -42,18 +40,9 @@
      margin-right: 10px;
  }
  
- .gold-star {
-     color: $gold;
- }
- 
- .table-header {
-     background: $green-dark;
-     border-color: $green-dark !important;
- }
- 
  .card {
      max-width: 400px;
      width: 400px;
      margin: 15px 0;
-     background-color: $green-light;
+     background-color: $orange;
  }

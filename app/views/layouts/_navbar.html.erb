@@ -1,19 +1,24 @@
-<nav>
+<nav class="navbar navbar-light bg-light">
+
+  <a class="navbar-brand" href="/"></a>
+  <form class="form-inline">
   <ul>
-  <li><%= link_to "Home", root_path, method: :get %></li>
+  <li><%= link_to "Home", root_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
 
     <% if !user_signed_in? %>
-      <li><%= link_to "Sign up", new_user_registration_path, method: :get %></li>
-      <li><%= link_to "Login", new_user_session_path, method: :get %></li>
+      <li><%= link_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
+      <li><%= link_to "Login", new_user_session_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
     
     <% else user_session%>
         <%= current_user.name %>
-        <li><%= link_to "Create a New Pattern", new_pattern_path, method: :get %></li>
-        <li><%= link_to "All Patterns", patterns_path, method: :get %></li>
-        <li><%= link_to "All Comments", comments_path, method: :get %></li>
-        <li><%= link_to "All Users", users_path, method: :get %></li>
-        <li><%= link_to "Sign Out", destroy_user_session_url, method: :delete %></li>
+          <li><%= link_to "Create a New Pattern", new_pattern_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
+          <li><%= link_to "All Patterns", patterns_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
+          <li><%= link_to "All Comments", comments_path, method: :get, class: "btn btn-outline-primary nav-btn" %></li>
+          <li><%= link_to "All Users", users_path, method: :get , class: "btn btn-outline-primary nav-btn"%></li>
+          <li><%= link_to "Sign Out", destroy_user_session_url, method: :delete, class: "btn btn-outline-primary nav-btn" %></li>
       <% end %>
+      </div>
     </ul>
+  </form>
 </nav>
 
