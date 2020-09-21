@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Welcome to PatternKeeper where your disorganized papers can be oganized in one simple application.  A user can not only keep various patterns organized, see other user's kept patterns, and comment on a pattern.  A User can clone PatternKeeper on github. simple copy this link https://github.com/jrtiff0221/patternkeeper. Open your own Integrated Development Environment or IDE. In the terminal emulator, cd into the desired document andrai git clone https://github.com/jrtiff0221/patternkeeper. Before running the application make sure to bundle install.  Once the user is ready to Sign Up for PatternKeep they will need to run rails s in the terminal. Copy 127.0.0.1:3000 and paste into search bar. A get request is sent and 'application#home' is rendered. This application uses a few gems that make signing up and logging in fairly easy as well as using a third party provider "GitHub" to get signed up and logged in even faster. Devise is the gem used to login and omniauth is the gem that allows users to signup and login via GitHub. Another get request is sent to a server and a logged in user is directed to the home page again, but with a Welcome message as letting the user know they have successfully logged into PatternKeeper.  On the right upperhand corner are a few options Home, User Name, Create a Pattern, All Patterns, All Comments, All Users, and Sign Out. Through PatternKeeper not only can an individual get organized, but also network with other crafty people.
