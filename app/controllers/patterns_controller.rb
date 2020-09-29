@@ -37,12 +37,8 @@ def show
 end
 
 def update
-  set_pattern
-  if current_user.id == @pattern.user_id && @pattern.update(pattern_params)
+  @pattern = Pattern.find_by(id: params[:id])
     redirect_to  pattern_path(@pattern)
-  else 
-    render :edit 
-  end
 end
 
 def edit
